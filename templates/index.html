@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce website</title>
+    <meta name="description" content="Your website description goes here">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Add Open Graph meta tags for social media sharing -->
+    <meta property="og:title" content="Your Website Title">
+    <meta property="og:description" content="Your website description goes here">
+    <meta property="og:image" content="url-to-your-image.jpg">
+</head>
+<body>
+    <div id="chatbot-container">
+        <div id="chatbot-icon">&#128172;</div>
+        <div id="chat-window">
+            <div id="close-chat" onclick="closeChat()">&#10006;</div>
+            <div id="chat-messages"></div>
+            <input type="text" id="chat-input" placeholder="Type your message...">
+            <button id="send-message" onclick="sendMessage()">Send</button>
+            <div id="message-container"></div>
+        </div>
+    </div>
+    
+    <!-- Header Section -->
+    <header>
+        <img src="https://plus.unsplash.com/premium_photo-1682002135678-87b8a2fdde50?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Your Logo" class="logo">
+        <!-- Hamburger icon for mobile menu -->
+        <div id="mobile-menu-icon">&#9776;</div>
+        <!-- Navigation Bar -->
+        <nav>
+            <a href="#">Home</a>
+            <a href="/about">About</a>
+            <a href="/product">Products</a>
+            <a href="/contact">Contact</a>
+            <a href="/Services">Services</a>
+            <!-- Sign In Options Container -->
+            <form action="/search" method="get" class="search-form">
+                <input type="text" name="query" placeholder="Search products...">
+                <button type="submit">Search</button>
+            </form>
+            <div class="user-account">
+                {% if username %}
+                <p>Welcome, {{ username }}!</p>
+                <a href="/signout">Sign out</a>
+                {% else %}
+                <a href="/signin">Sign In</a>
+                <span class="divider">|</span>
+                <a href="/signup">Sign Up</a>
+                {% endif %}
+            </div>
+            <a href="/cart" class="shopping-cart">
+                <span class="cart-icon">🛒</span>
+                <span class="cart-count">0</span>
+            </a>
+        </nav>
+    </header>
+    <!-- Main Content Section -->
+    <main>
+        <section id="welcome-section">
+            <h2>Welcome to Our Website!</h2>
+        </section>
+        <!-- Additional Section -->
+        <section id="additional-section">
+            <a href="your-next-webpage.html">
+                <h2>Explore More</h2>
+                <p>Discover exciting features and services.</p>
+            </a>
+        </section>
+        <br>
+        <!-- Add more products as needed -->
+    </main>
+    <!-- Sidebar Section (optional) -->
+    <aside>
+        <!-- Add additional information, links, or widgets here -->
+        <!-- Product Display Section -->
+        <h2 id="gh">Shop Our Products</h2>
+        <section id="product-display">
+            <div class="product">
+                <a href="#"><img src="https://images.unsplash.com/photo-1527719327859-c6ce80353573?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>$19.99</p>
+            </a>
+            </div>
+            <div class="product">
+                <a href="#"><img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1898&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 2">
+                <h3>Product 2</h3>
+                <p>$29.99</p>
+            </a>
+            </div>
+            <div class="product">
+                <a href="#"><img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1898&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>$39.99</p>
+            </a>
+            </div>
+            <div class="product">
+                <a href="#"><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 4">
+                <h3>Product 4</h3>
+                <p>$49.99</p>
+            </a>
+            </div>
+            <div class="product">
+                <a href="#"><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 1">
+                <h3>Product 5</h3>
+                <p>$19.99</p>
+            </a>
+            </div>
+            <div class="product">
+                <a href="#"><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 2">
+                <h3>Product 6</h3>
+                <p>$29.99</p>
+            </a>
+            </div>
+            <div class="product">
+                <a href="#"><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 3">
+                <h3>Product 7</h3>
+                <p>$39.99</p>
+            </a>
+            </div>
+            <div class="product">
+                <a href="#"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 4">
+                <h3>Product 8</h3>
+                <p>$49.99</p>
+            </a>
+            </div>
+    </aside>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Your Website Name. All rights reserved.</p>
+        <!-- Add additional footer content, such as links to privacy policy, terms, etc. -->
+    </footer>
+    <!-- Add any additional scripts or libraries at the end of the body -->
+    <!-- Link to your external JavaScript file -->
+    <script type="text/javascript" src="{{ url_for('static', filename='script/script.js') }}"></script>
+</body>
+</html>
+
